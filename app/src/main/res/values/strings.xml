@@ -24,6 +24,8 @@
     <!--or something similar.-->
     <string name="app_name">Sunshine</string>
 
+    <!--Used in overflow menu to refresh weather data-->
+    <string name="action_refresh">Refresh</string>
 
     <!-- - - - - - - - - - - - - -->
     <!--Used by SunshineDateUtils-->
