@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp">
 
+    <!-- Text that describes the weather summary for a given day -->
     <TextView
         android:id="@+id/tv_display_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        tools:text="Saturday, October 1 - Sunny - 78° / 63°"/>
 
 </FrameLayout>

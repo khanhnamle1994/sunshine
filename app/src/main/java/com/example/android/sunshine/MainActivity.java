@@ -31,11 +31,17 @@ public class MainActivity extends AppCompatActivity implements
         LoaderCallbacks<String[]>,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private RecyclerView mRecyclerView;
     private ForecastAdapter mForecastAdapter;
+
     private TextView mErrorMessageDisplay;
+
     private ProgressBar mLoadingIndicator;
+
     private static final int FORECAST_LOADER_ID = 0;
+
     private static boolean PREFERENCES_HAVE_BEEN_UPDATED = false;
 
     @Override
@@ -53,12 +59,24 @@ public class MainActivity extends AppCompatActivity implements
         mErrorMessageDisplay = (TextView) findViewById(R.id.tv_error_message_display);
 
         /*
-         * LinearLayoutManager can support HORIZONTAL or VERTICAL orientations. The reverse layout
-         * parameter is useful mostly for HORIZONTAL layouts that should reverse for right to left
-         * languages.
+         * A LinearLayoutManager is responsible for measuring and positioning item views within a
+         * RecyclerView into a linear list. This means that it can produce either a horizontal or
+         * vertical list depending on which parameter you pass in to the LinearLayoutManager
+         * constructor. In our case, we want a vertical list, so we pass in the constant from the
+         * LinearLayoutManager class for vertical lists, LinearLayoutManager.VERTICAL.
+         *
+         * There are other LayoutManagers available to display your data in uniform grids,
+         * staggered grids, and more! See the developer documentation for more details.
          */
+        int recyclerViewOrientation = LinearLayoutManager.VERTICAL;
+
+        /*
+         *  This value should be true if you want to reverse your layout. Generally, this is only
+         *  true with horizontal lists that need to support a right-to-left layout.
+         */
+        boolean shouldReverseLayout = false;
         LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+                = new LinearLayoutManager(this, recyclerViewOrientation, shouldReverseLayout);
         mRecyclerView.setLayoutManager(layoutManager);
 
         /*
@@ -135,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public Loader<String[]> onCreateLoader(int id, final Bundle loaderArgs) {
+
         return new AsyncTaskLoader<String[]>(this) {
 
             /* This String array will hold and help cache our weather data */
@@ -163,10 +182,7 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public String[] loadInBackground() {
 
-                String locationQuery = SunshinePreferences
-                        .getPreferredWeatherLocation(MainActivity.this);
-
-                URL weatherRequestUrl = NetworkUtils.buildUrl(locationQuery);
+                URL weatherRequestUrl = NetworkUtils.getUrl(MainActivity.this);
 
                 try {
                     String jsonWeatherResponse = NetworkUtils
@@ -245,7 +261,6 @@ public class MainActivity extends AppCompatActivity implements
      * open the Common Intents page
      */
     private void openLocationInMap() {
-
         String addressString = SunshinePreferences.getPreferredWeatherLocation(this);
         Uri geoLocation = Uri.parse("geo:0,0?q=" + addressString);
 
