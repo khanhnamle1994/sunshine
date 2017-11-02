@@ -15,18 +15,6 @@
  */
 package com.example.android.sunshine.utilities;
 
-import android.net.Uri;
-import android.util.Log;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
-
-package com.example.android.sunshine.utilities;
-
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
