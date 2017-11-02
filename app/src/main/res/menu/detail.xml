@@ -9,4 +9,10 @@
         android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
         android:title="@string/action_share"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
 </menu>

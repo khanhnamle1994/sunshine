@@ -312,6 +312,12 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
 
+        if (id == R.id.action_settings) {
+            Intent startSettingsActivity = new Intent(this, SettingsActivity.class);
+            startActivity(startSettingsActivity);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
