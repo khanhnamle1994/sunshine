@@ -318,7 +318,7 @@ public class WeatherProvider extends ContentProvider {
         if (numRowsDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
-        
+
         return numRowsDeleted;
     }
 
