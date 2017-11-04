@@ -13,9 +13,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/today_touch_selector"
     android:paddingBottom="@dimen/today_forecast_list_item_vertical_padding"
     android:paddingTop="@dimen/today_forecast_list_item_vertical_padding">
 
