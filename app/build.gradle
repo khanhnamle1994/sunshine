@@ -26,9 +26,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
 
-    }
+    dataBinding.enabled = true
 }
 
 dependencies {
